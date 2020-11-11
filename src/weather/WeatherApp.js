@@ -11,6 +11,7 @@ export default function WeatherApp() {
   const [cityList, setCityList] = useState([]);
   const [cityDegree, setCityDegree] = useState("Celsius");
   const [weather, setWeather] = useState({});
+  const [message, setMessage] = useState("");
   useEffect(() => {
     const options = {
       method: "GET",
@@ -55,8 +56,14 @@ export default function WeatherApp() {
         }&appid=8611a2478e30b28a4764785e6b6843dd`
       )
       .then((response) => {
+        setMessage("");
         setTemperature(response.data ? response.data.main : []);
         setWeather(response.data);
+      })
+      .catch((errorResponse) => {
+        setTemperature([]);
+        setWeather([]);
+        setMessage(`Weather info not found for the city:`);
       });
   }
 
@@ -99,42 +106,48 @@ export default function WeatherApp() {
         </div>
       </div>
       <div className="rightContainer">
-        {weather.weather ? (
-          <div>
-            <div className="imagePanel">
-              <img
-                src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
-                alt={weather.weather[0].description}
-              />
-            </div>
-            <div style={{ display: "flex" }}>
-              <div className="weatherLabel"> Temperature: </div>
-              <div className="weatherValue">
-                {temparature.temp}{" "}
-                {temparature.temp ? (
-                  <sup>&deg; {cityDegree === "Celsius" ? "C" : "F"}</sup>
-                ) : (
-                  ""
-                )}
+        <div style={{ display: message ? "block" : "none" }}>
+          <div className="errorMessage">{message}</div>
+          <div className="errorCity">{cityName}</div>
+        </div>
+        <div style={{ display: message ? "none" : "block" }}>
+          {weather.weather ? (
+            <div>
+              <div className="imagePanel">
+                <img
+                  src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+                  alt={weather.weather[0].description}
+                />
+              </div>
+              <div style={{ display: "flex" }}>
+                <div className="weatherLabel"> Temperature: </div>
+                <div className="weatherValue">
+                  {temparature.temp}{" "}
+                  {temparature.temp ? (
+                    <sup>&deg; {cityDegree === "Celsius" ? "C" : "F"}</sup>
+                  ) : (
+                    ""
+                  )}
+                </div>
+              </div>
+              <div style={{ display: "flex" }}>
+                <div className="weatherLabel"> Humidity: </div>
+                <div className="humidityValue">
+                  {temparature.humidity ? temparature.humidity : "-"}
+                </div>
+              </div>
+              <div style={{ display: "flex" }}>
+                <div className="weatherLabel"> Feels Like: </div>
+                <div className="feelsLikeValue">
+                  {temparature.feels_like ? temparature.feels_like : "-"}
+                  <sup>&deg; {cityDegree === "Celsius" ? " C" : " F"}</sup>
+                </div>
               </div>
             </div>
-            <div style={{ display: "flex" }}>
-              <div className="weatherLabel"> Humidity: </div>
-              <div className="humidityValue">
-                {temparature.humidity ? temparature.humidity : "-"}
-              </div>
-            </div>
-            <div style={{ display: "flex" }}>
-              <div className="weatherLabel"> Feels Like: </div>
-              <div className="feelsLikeValue">
-                {temparature.feels_like ? temparature.feels_like : "-"}
-                <sup>&deg; {cityDegree === "Celsius" ? " C" : " F"}</sup>
-              </div>
-            </div>
-          </div>
-        ) : (
-          ""
-        )}
+          ) : (
+            ""
+          )}
+        </div>
       </div>
     </div>
   );

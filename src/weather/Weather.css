@@ -78,3 +78,14 @@
   margin-left: 24px;
   border-left: 2px solid #ddd;
 }
+.errorMessage {
+  color: red;
+  padding: 8px;
+  font-size: 20px;
+  margin-top: 60px;
+}
+.errorCity {
+  color: green;
+  padding: 8px;
+  font-size: 20px;
+}
