@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Button, Radio, Select, Form } from "antd";
+import { Button, Radio, Select } from "antd";
+import "antd/dist/antd.css";
 import axios from "axios";
 import "./Weather.css";
 
 const { Option } = Select;
 export default function WeatherApp() {
   const [cityName, setCityName] = useState([]);
-
   const [temparature, setTemperature] = useState([]);
   const [cityList, setCityList] = useState([]);
   const [cityDegree, setCityDegree] = useState("Celsius");
@@ -26,20 +26,16 @@ export default function WeatherApp() {
     });
   }, []);
   function cityNameStore(event) {
-    setCityName(event.target.value);
+    setCityName(event);
   }
   function degreeSave(value) {
     setCityDegree(value.target.value);
   }
   const options = cityList
     ? cityList.map((k) => (
-        <option
-          key={k.id}
-          value={(k.city, k.region, k.country)}
-          style={{ paddingRight: "0px" }}
-        >
+        <Option key={k.id} value={k.city} style={{ paddingRight: "0px" }}>
           {k.city},{k.region},{k.country}
-        </option>
+        </Option>
       ))
     : [];
 
@@ -69,15 +65,16 @@ export default function WeatherApp() {
       <div>
         <div className="title">Weather Information</div>
         <div className="componentStyle">
-          <select
+          <Select
+            showSearch
             onChange={(e) => {
               cityNameStore(e);
             }}
-            className="cityInput"
-            showSearch
+            style={{ width: 300 }}
+            // className="cityInput"
           >
             {options}
-          </select>
+          </Select>
         </div>
         <div className="componentStyle">
           <Radio.Group

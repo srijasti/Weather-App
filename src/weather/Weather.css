@@ -1,8 +1,7 @@
 .radioLabel {
   border: 1px solid #ddd;
   padding: 8px 12px;
-  background: skyblue;
-  color: white;
+  background: aliceblue;
   margin-left: 8px;
   border-radius: 8px;
   box-shadow: 1px 1px 5px rgba(0, 21, 41, 0.2);
@@ -45,7 +44,7 @@
 .imagePanel {
   width: 260px;
   text-align: center;
-  margin-top: -34px;
+  margin-top: 24px;
 }
 .componentStyle {
   height: 50px;
@@ -54,7 +53,6 @@
   align-items: center;
 }
 .buttonStyle {
-  background-color: rgb(24, 144, 255);
   width: 100%;
   height: 40px;
   border-radius: 8px;
