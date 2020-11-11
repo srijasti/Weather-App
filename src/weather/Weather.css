@@ -1,0 +1,69 @@
+.radioLabel {
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  background: skyblue;
+  color: white;
+  margin-left: 8px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 5px rgba(0, 21, 41, 0.2);
+}
+.cityInput {
+  width: 300px;
+  height: 40px;
+  padding: 8px;
+  background: aliceblue;
+  margin-right: 24px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 5px rgba(0, 21, 41, 0.2);
+}
+.weatherLabel {
+  width: 150px;
+  text-align: right;
+  margin-right: 12px;
+  margin-top: 2px;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: sans-serif;
+}
+.weatherValue {
+  font-size: 20px;
+  margin-top: -6px;
+  height: 40px;
+  color: red;
+}
+.humidityValue {
+  font-size: 20px;
+  height: 40px;
+  color: green;
+}
+.feelsLikeValue {
+  font-size: 20px;
+  height: 40px;
+  margin-top: -6px;
+  color: blueviolet;
+}
+.imagePanel {
+  width: 260px;
+  text-align: center;
+  margin-top: -34px;
+}
+.componentStyle {
+  height: 50px;
+  /* display: flex; */
+  margin-top: 8px;
+  align-items: center;
+}
+.buttonStyle {
+  background-color: rgb(24, 144, 255);
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  border: 0px;
+  box-shadow: 1px 1px 5px rgba(0, 21, 41, 0.2);
+}
+.title {
+  font-size: 32px;
+  font-weight: bold;
+  font-family: "comic gothic";
+  margin-bottom: 24px;
+}
