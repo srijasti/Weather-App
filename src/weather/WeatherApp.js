@@ -10,6 +10,8 @@ export default function WeatherApp() {
   const [temparature, setTemperature] = useState([]);
   const [cityList, setCityList] = useState([]);
   const [cityDegree, setCityDegree] = useState("Celsius");
+
+  const [selectedMeasure, setSelectedMeasure] = useState("Celsius");
   const [weather, setWeather] = useState({});
   const [message, setMessage] = useState("");
   useEffect(() => {
@@ -57,6 +59,7 @@ export default function WeatherApp() {
       )
       .then((response) => {
         setMessage("");
+        setSelectedMeasure(cityDegree === "Celsius" ? "C" : "F");
         setTemperature(response.data ? response.data.main : []);
         setWeather(response.data);
       })
@@ -123,11 +126,7 @@ export default function WeatherApp() {
                 <div className="weatherLabel"> Temperature: </div>
                 <div className="weatherValue">
                   {temparature.temp}{" "}
-                  {temparature.temp ? (
-                    <sup>&deg; {cityDegree === "Celsius" ? "C" : "F"}</sup>
-                  ) : (
-                    ""
-                  )}
+                  {temparature.temp ? <sup>&deg; {selectedMeasure}</sup> : ""}
                 </div>
               </div>
               <div style={{ display: "flex" }}>
@@ -140,7 +139,7 @@ export default function WeatherApp() {
                 <div className="weatherLabel"> Feels Like: </div>
                 <div className="feelsLikeValue">
                   {temparature.feels_like ? temparature.feels_like : "-"}
-                  <sup>&deg; {cityDegree === "Celsius" ? " C" : " F"}</sup>
+                  <sup>&deg; {selectedMeasure}</sup>
                 </div>
               </div>
             </div>
