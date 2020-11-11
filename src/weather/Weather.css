@@ -65,3 +65,16 @@
   font-family: "comic gothic";
   margin-bottom: 24px;
 }
+.container {
+  display: flex;
+  padding: 32px;
+  width: 640px;
+  margin: auto;
+  border: 1px solid #ddd;
+  box-shadow: 5px 5px 16px rgba(0, 21, 41, 0.3);
+}
+.rightContainer {
+  background-color: cornsilk;
+  margin-left: 24px;
+  border-left: 2px solid #ddd;
+}

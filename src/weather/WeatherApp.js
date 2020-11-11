@@ -61,7 +61,7 @@ export default function WeatherApp() {
   }
 
   return (
-    <div style={{ display: "flex", padding: "24px", width: "600px" }}>
+    <div className="container">
       <div>
         <div className="title">Weather Information</div>
         <div className="componentStyle">
@@ -98,7 +98,7 @@ export default function WeatherApp() {
           </Button>
         </div>
       </div>
-      <div>
+      <div className="rightContainer">
         {weather.weather ? (
           <div>
             <div className="imagePanel">
